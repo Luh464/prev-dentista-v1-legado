@@ -16,14 +16,6 @@ O projeto funcionou como o marco zero para o desenvolvimento do trabalho final. 
 
 Este espaço serve como registro histórico do estado do software antes da implementação do Painel Administrativo Dinâmico e das regras de parametrização flexível exigidas na disciplina.
 
-git add README.md
-git commit -m "docs: adiciona link oficial da versao 2.0"
-git push origin maingit add README.md
-git commit -m "docs: adiciona link oficial da versao 2.0"
-git push origin maingit add README.md
-git commit -m "docs: adiciona link oficial da versao 2.0"
-git push origin main
-
 ---
 
 ## 🔗 Evolução do Projeto
@@ -32,4 +24,4 @@ O ecossistema completo do projeto foi dividido para melhor avaliação das etapa
 
 * 📂 **Versão Atual (Este Repositório):** Código base estruturado em MVC, mas com regras de negócio rígidas (*hardcoded*).
 * 🚀 **Versão 2.0 (Repositório Refatorado):** Plataforma escalável com Painel Administrativo Dinâmico, CRUD de regras e Novo Modelo de Rateio Complexo (50/10/40).
-  * [Acesse aqui o Repositório da Versão 2.0](COLE_https://github.com/Luh464/prev-dentistaAQUI_O_LINK_DO_SEU_OUTRO_GITHUB)
+  * [Acesse aqui o Repositório da Versão 2.0](https://github.com/Luh464/prev-dentista)
