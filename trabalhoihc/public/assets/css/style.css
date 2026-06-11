@@ -1,0 +1,669 @@
+:root {
+    /* Cores extraídas do login.php */
+    --primary-color: #005b96;      /* Azul do padrão login */
+    --primary-dark: #0370b5;       /* Equivalente ao primary-light do login */
+    --background-color: #f4f7f6;   /* Cor bg-light do login */
+    --secondary-color: #6c757d;  /* Adicione esta linha */
+    --info-color: #17a2b8;       /* Adicione esta também para o btn-cancel/info */
+    --success-color: #28a745;      /* Verde sucesso */
+    --danger-color: #dc3545;       /* Vermelho erro */
+    --border-color: #dee2e6;
+    --white-color: #ffffff;
+
+    /* Formato dos botões e elementos */
+    --border-radius: 30px;         /* Formato arredondado presente nos botões e inputs do login */
+    
+    /* Outras variáveis existentes permanecem ou são adaptadas */
+    --text-color: #2d3436;         /* Cor text-dark do login */
+    --shadow-md: 0 10px 30px rgba(0,0,0,0.1); /* Sombra padrão do login */
+}
+
+body {
+    font-family: 'Open Sans', sans-serif; /* Fonte principal do login.php */
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Adicione se houver seletores de títulos no seu style.css */
+h1, h2, h3, h4, .logo {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   BOTÕES (Ajustados para aparecerem sempre e com formato arredondado)
+   ========================================================================== */
+
+/* Regras gerais para todos os botões */
+.btn, button, input[type="submit"] {
+    border-radius: var(--border-radius); /* 30px conforme o login.php */
+    padding: 10px 25px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+/* Botão Primário (Azul do padrão) */
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-secondary { 
+    background-color: var(--secondary-color); 
+    color: #ffffff; 
+}
+
+.btn-secondary:hover { 
+    background-color: #28a745; 
+}
+
+
+/* Botão Sucesso (Verde - Corrigido para estar sempre visível) */
+.btn-success {
+    background-color: #28a745; 
+    color: #ffffff;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+/* Botão Perigo/Erro (Vermelho - Corrigido para estar sempre visível) */
+.btn-danger {
+    background-color: #dc3545;
+    color: #ffffff;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+}
+
+/* Botão Alerta (Amarelo - Corrigido para estar sempre visível) */
+.btn-warning {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+    transform: translateY(-2px);
+}
+
+.btn-info { 
+    background-color: var(--info-color); 
+    color:  #ffffff; 
+}
+.btn-info:hover { 
+    background-color: #138496; 
+}
+
+/* Definição do botão Cancelar */
+.btn-cancel {
+    background-color: #17a2b8; /* Cor sólida (Equivalente ao Info) */
+    color: #ffffff !important;
+    border: none;
+    
+    /* Padrão do login.php */
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    border-radius: var(--border-radius); /* Usa os 30px definidos no :root */
+    padding: 10px 25px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+/* Estado quando passa o mouse */
+.btn-cancel:hover {
+    background-color: #138496; /* Cor um pouco mais escura */
+    color: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    text-decoration: none;
+}
+
+/* Conteúdo do seu style.css */
+html {
+    scroll-behavior: smooth;
+}
+
+
+.container {
+    max-width: 1280px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+    min-height: 80vh;
+}
+
+/* ==========================================================================
+   HEADER & NAVBAR (Novo Comportamento Isolado)
+   ========================================================================== */
+.navbar {
+    background-color: var(--primary-color);
+    box-shadow: var(--shadow-sm);
+    padding: 0.8rem 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: none;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 2000;
+}
+
+.logo {
+    font-weight: bold;
+    color: white;
+}
+
+.menu {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.menu a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    transition: color 0.2s;
+    position: relative;
+}
+
+.menu a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    transition: width 0.3s;
+}
+
+.menu a:hover::after, .menu a.active::after {
+    width: 100%;
+}
+
+.menu a:hover, .menu a.active, .dropdown:hover > a {
+    color: white;
+    opacity: 1;
+}
+
+/* Dropdown Logic */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--card-bg);
+    min-width: 220px;
+    box-shadow: var(--shadow-md);
+    border-radius: var(--border-radius);
+    z-index: 2001;
+    top: 100%;
+    left: 0;
+    padding: 0.5rem 0;
+}
+
+/* Estilo específico para links DENTRO do dropdown para não quebrar o layout global */
+.dropdown-content a {
+    padding: 0.75rem 1.5rem !important;
+    display: block !important;
+    color: var(--text-color) !important;
+    font-weight: 400 !important;
+    text-transform: none !important;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.dropdown-content a:last-child { border-bottom: none; }
+.dropdown-content a::after { display: none !important; }
+
+.dropdown-content a:hover {
+    background-color: var(--background-color) !important;
+    color: var(--primary-color) !important;
+}
+
+/* Hover Interativo Desktop */
+@media (min-width: 769px) {
+    .dropdown:hover .dropdown-content { 
+        display: block; 
+        animation: fadeInMenu 0.2s ease-in;
+    }
+}
+
+@keyframes fadeInMenu {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    border-radius: 2px;
+}
+
+.user-menu {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.user-menu span {
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   BOTÕES (Original)
+   ==========================================================================
+.btn {
+    padding: 0.6rem 1.2rem;
+    border: 1px solid transparent;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s;
+    text-align: center;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.btn-primary { background-color: var(--primary-color); color: white; }
+.btn-primary:hover { background-color: var(--primary-dark); }
+.btn-secondary { background-color: var(--secondary-color); color: white; }
+.btn-secondary:hover { background-color: #5a6268; }
+.btn-success { background-color: var(--success-color); color: white; }
+.btn-success:hover { background-color: #218838; }
+.btn-danger { background-color: var(--danger-color); color: white; }
+.btn-danger:hover { background-color: #c82333; }
+.btn-info { background-color: var(--info-color); color: white; }
+.btn-info:hover { background-color: #138496; }
+ */
+/* ==========================================================================
+   CARDS & FORMULÁRIOS (Original - Restaurado)
+   ========================================================================== */
+.card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #495057;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type="date"],
+input[type="month"],
+select, textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    box-sizing: border-box;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    background-color: #fff;
+    color: var(--text-color); /* Garante que o texto do input não seja branco */
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+}
+
+/* ==========================================================================
+   TABELAS (Original)
+   ========================================================================== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    align-self: start;
+}
+
+th, td {
+    padding: 1rem 1.2rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+thead th {
+    background-color: #e9ecef;
+    font-weight: 600;
+    color: #495057;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+tbody tr:hover {
+    background-color: rgba(0, 123, 255, 0.05);
+}
+
+/* Dashboard Stats */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.stat-card {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    border-left: 5px solid var(--primary-color);
+    transition: transform 0.2s;
+}
+
+.stat-card:hover { transform: translateY(-5px); }
+
+.stat-card h3 {
+    margin-top: 0;
+    font-size: 1rem;
+    color: var(--secondary-color);
+    text-transform: uppercase;
+}
+
+.stat-value {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.stat-card .lucro-liquido {
+    border-left-color: var(--success-color);
+}
+
+.text-muted {
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+}
+
+.error {
+    color: var(--danger-color);
+    background-color: #fdd;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE (Original com Ajuste de Dropdown)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .menu-toggle { display: flex; }
+
+    .menu {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 0;
+        margin-top: 1rem;
+        background-color: white;
+        box-shadow: var(--shadow-md);
+        border-radius: var(--border-radius);
+        padding: 1rem;
+    }
+
+    .menu.active { display: flex; }
+
+    .menu a {
+        padding: 0.8rem 0;
+        border-bottom: 1px solid var(--border-color);
+        width: 100%;
+        color: var(--text-color);
+    }
+   
+    .menu a::after { display: none; }
+
+    .menu a:hover, .menu a.active { color: var(--primary-color); }
+
+    .dropdown { width: 100%; }
+    .dropdown-content {
+        position: static;
+        box-shadow: none;
+        padding-left: 1rem;
+        background-color: transparent;
+        display: none;
+    }
+
+    .user-menu {
+        width: 100%;
+        justify-content: center;
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--border-color);
+    }
+
+    .container { padding: 0 1rem; }
+   
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    /* Tabela Responsiva em Cards (Mobile) */
+    .mobile-card-table {
+        display: block;
+        border: 0;
+    }
+    .mobile-card-table thead {
+        display: none;
+    }
+    .mobile-card-table tbody, .mobile-card-table tr, .mobile-card-table td {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .mobile-card-table tr {
+        margin-bottom: 1rem;
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius);
+        background-color: #fff;
+        box-shadow: var(--shadow-sm);
+    }
+    .mobile-card-table td {
+        text-align: left;
+        padding: 10px 15px;
+        position: relative;
+        border-bottom: 1px solid #eee;
+        white-space: normal; /* Permite quebra de linha no texto */
+        display: flex;
+        justify-content: flex-start;
+        gap: 10px;
+        align-items: center;
+    }
+    .mobile-card-table td:last-child {
+        border-bottom: none;
+    }
+    .mobile-card-table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        text-align: left;
+        color: var(--secondary-color);
+        margin-right: 1rem;
+        flex-shrink: 0;
+    }
+}
+
+/* --- Landing Page Styles --- */
+.lp-body { background-color: white; color: var(--text-color); }
+.lp-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; align-items: center; justify-content: center;}
+.lp-header { background: var(--primary-color); padding: 15px 0; color: white; position: sticky; top:0; z-index: 1000; box-shadow: var(--shadow-md); }
+.lp-header .logo a { color: white; text-decoration: none; font-size: 1.2rem; font-weight: bold; }
+
+.nav-flex { display: flex; justify-content: space-between; align-items: center; }
+
+.lp-login-form { display: flex; gap: 10px; align-items: center; }
+.lp-login-form input { 
+    padding: 6px 12px !important; 
+    font-size: 14px !important; 
+    border-radius: 4px !important; 
+    width: 150px !important; 
+    margin-bottom: 0 !important;
+}
+
+/* Menu Landing Page */
+.lp-nav { display: flex; align-items: center; gap: 20px; }
+.lp-nav a { color: rgba(255,255,255,0.9); text-decoration: none; font-weight: 500; transition: 0.3s; }
+.lp-nav a:hover { color: white; text-decoration: underline; }
+
+.lp-mobile-toggle { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+.lp-mobile-toggle span { width: 25px; height: 3px; background-color: white; border-radius: 2px; }
+
+@media (max-width: 768px) {
+    .lp-mobile-toggle { display: flex; }
+    
+    .lp-nav {
+        display: none; /* Escondido por padrão no mobile */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--primary-color);
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    
+    .lp-nav.active { display: flex; }
+    .lp-login-form { flex-direction: column; width: 100%; }
+    .lp-login-form input { width: 100% !important; margin-bottom: 10px !important; }
+    .lp-login-form button { width: 100%; }
+}
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; padding: 60px 0; }
+
+.lp-hero h1 { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 20px; }
+.lp-features { list-style: none; padding: 20px 0; }
+.lp-features li { margin-bottom: 12px; font-size: 1.1rem; }
+.lp-features i { color: var(--success-color); margin-right: 10px; }
+
+.section-title { text-align: center; font-size: 2rem; margin-bottom: 40px; color: var(--primary-dark); }
+
+.team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+.team-card { text-align: center; transition: 0.3s; padding: 20px; border-radius: var(--border-radius); background: var(--background-color); }
+.team-card:hover { transform: translateY(-10px); background: #ebf5ff; }
+
+.img-wrapper { 
+    width: 100%; 
+    height: 350px; 
+    overflow: hidden; 
+    border-radius: 15px; 
+    margin-bottom: 15px;
+    box-shadow: var(--shadow-sm);
+}
+.img-wrapper img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+
+.lp-error { color: #ffcccc; font-size: 12px; position: absolute; bottom: -18px; right: 0; }
+
+.lp-footer { text-align: center; padding: 40px; background: #212529; color: white; margin-top: 50px; }
+
+@media (max-width: 768px) {
+    .grid-2, .team-grid { grid-template-columns: 1fr; }
+    .hero-text { text-align: center; }
+}
+
+.drop-zone {
+    width: 100%;
+    max-width: 100%;
+    height: 150px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    color: #cccccc;
+    border: 2px dashed #3b82f6;
+    border-radius: 10px;
+    background-color: #f8fafc;
+    transition: all 0.3s ease;
+}
+
+.drop-zone--over {
+    border-style: solid;
+    background-color: #eff6ff;
+    transform: scale(1.01);
+}
+
+.drop-zone__icon {
+    font-size: 30px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.drop-zone__prompt p {
+    margin: 5px 0;
+    color: #444;
+}
+
+.drop-zone__specs {
+    font-size: 0.8rem;
+    color: #94a3b8;
+}
